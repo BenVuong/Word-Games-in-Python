@@ -1,4 +1,5 @@
 answer = "hello"
+turns = 8
 unknownWord = []
 for i in range(len(answer)):
     unknownWord.append("-")
@@ -20,11 +21,23 @@ def checkLetter(insertChar, target):
         print("\n")
         for i in range(len(unknownWord)):
             print(unknownWord[i], end=" ")
+        print("\n")
     else:
         print("Letter not in word")    
-   
-print("\n")
-input = input('Guess a letter that might be in the word:')[0]
-checkLetter(input, answer)
+        print("\n")
+
+
+for i in range(turns):   
+    print("\n Turn: " + str(i) + "\n")
+    userInput = input('Guess a letter that might be in the word:')[0]
+    checkLetter(userInput, answer)
+    final = "".join(unknownWord)
+    if(final == answer):
+        print("\n You win" )
+        break
+    if i == turns-1:
+        print("You lose")
+        print("The word was: " + answer)
+
 
 
