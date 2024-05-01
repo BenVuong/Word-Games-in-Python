@@ -4,10 +4,10 @@ turns = 8
 unknownWord = []
 listOfWords = []
 
-
-
 def checkLetter(insertChar, target):
-    
+    #takes in the character and check if it is in the target word
+    #if it is return an array of all of the indexes of where the character is in the target word
+        
     if(target.find(insertChar)!=-1):
         locatArray = []
     
@@ -35,7 +35,7 @@ for x in f:
 f.close
 answerIndex = randint(0,len(listOfWords)-1)
 answer=listOfWords[answerIndex]
-
+answer = answer.strip()
 
 print("Welcome to Hangman")
 print("A random word will be choosen and you will have 8 turns to guess a letter that belongs in that word")
@@ -47,6 +47,7 @@ for i in range(len(unknownWord)):
 for i in range(turns):   
     print("\n Turn: " + str(i+1) + "\n")
     if(i == turns-1):
+        
         userInput = input("Guess the word:")
         if(userInput == answer):
             print("You win")
