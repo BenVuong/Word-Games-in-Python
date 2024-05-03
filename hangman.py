@@ -3,7 +3,7 @@ wordList = []
 turns = 8
 unknownWord = []
 listOfWords = []
-
+listOfLetterGuessed = []
 def checkLetter(insertChar, target):
     #takes in the character and check if it is in the target word
     #if it is return an array of all of the indexes of where the character is in the target word
@@ -49,13 +49,19 @@ for i in range(turns):
     if(i == turns-1):
         
         userInput = input("Guess the word:")
+
         if(userInput == answer):
             print("You win")
         else:
             print("You lose")
             print("The word was: " + answer)
     else:
+        print("Letters that you have already guessed: ", end=" ")
+        for x in listOfLetterGuessed:
+            print(x, end=" ")
+        print("\n")
         userInput = input('Guess a letter that might be in the word:')[0]
+        listOfLetterGuessed.append(userInput)
         checkLetter(userInput, answer)
         final = "".join(unknownWord)
         if(final == answer):
